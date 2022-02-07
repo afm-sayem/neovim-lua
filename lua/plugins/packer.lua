@@ -33,11 +33,27 @@ return packer.startup(function()
     end
   }
 
+  -- surround
+  -- use {
+  --   "blackCauldron7/surround.nvim",
+  --   config = function()
+  --     require('surround').setup {mappings_style = "surround"}
+  --   end
+  -- }
+  use {
+    "tpope/vim-surround"
+  }
+
+  -- buffer management
+  use {
+    "jeetsukumaran/vim-buffergator"
+  }
+
   -- icons
   use 'kyazdani42/nvim-web-devicons'
 
   -- tagviewer
---  use 'liuchengxu/vista.vim'
+  --  use 'liuchengxu/vista.vim'
 
   -- treesitter interface
   use 'nvim-treesitter/nvim-treesitter'

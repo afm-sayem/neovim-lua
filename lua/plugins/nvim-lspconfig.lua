@@ -86,7 +86,7 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'vuels', 'eslint', 'clangd', 'html', 'tsserver' }
+local servers = { 'vuels', 'eslint', 'clangd', 'html' }
 
 -- Set settings for language servers below
 --
