@@ -25,6 +25,8 @@ return packer.startup(function()
   -- indent line
   use 'lukas-reineke/indent-blankline.nvim'
 
+  -- jinja
+  use 'lepture/vim-jinja'
   -- autopair
   use {
     'windwp/nvim-autopairs',
