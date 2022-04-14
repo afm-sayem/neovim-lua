@@ -35,6 +35,9 @@ return packer.startup(function()
     end
   }
 
+  -- formatter
+  use 'mhartington/formatter.nvim'
+
   -- surround
   -- use {
   --   "blackCauldron7/surround.nvim",
@@ -55,7 +58,7 @@ return packer.startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- tagviewer
-  --  use 'liuchengxu/vista.vim'
+   use 'liuchengxu/vista.vim'
 
   -- treesitter interface
   use 'nvim-treesitter/nvim-treesitter'

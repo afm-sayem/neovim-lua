@@ -40,4 +40,6 @@ map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close
 
 -- telescope
 map('n', '<leader>o', ':Telescope find_files<CR>', default_opts)
+map('n', '<leader>l', ':Telescope live_grep<CR>', default_opts)
+
 
