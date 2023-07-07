@@ -92,6 +92,9 @@ return packer.startup(function()
     },
   }
 
+  -- github copilot
+  use 'github/copilot.vim'
+
   -- statusline
   use {
     'nvim-lualine/lualine.nvim',
@@ -109,6 +112,15 @@ return packer.startup(function()
       require('gitsigns').setup()
     end
   }
+
+  -- lazygit
+  use({
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      requires = {
+          "nvim-lua/plenary.nvim",
+      },
+  })
 
   -- finder
   use {

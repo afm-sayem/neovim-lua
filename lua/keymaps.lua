@@ -45,3 +45,6 @@ map('n', '<leader>l', ':Telescope live_grep<CR>', default_opts)
 --lsp
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', default_opts)
 
+--lazygit
+map('n', '<leader>gg', ':LazyGit<CR>', default_opts)       -- open/close
+

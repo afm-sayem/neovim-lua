@@ -28,7 +28,7 @@
 -- }
 
 require('nvim-tree').setup {
-  open_on_setup = true,
+  -- open_on_setup = true,
   update_cwd = true,
   respect_buf_cwd = true,
   renderer = {
