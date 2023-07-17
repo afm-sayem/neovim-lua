@@ -18,19 +18,36 @@ Website: https://github.com/brainfucksec/neovim-lua
 -----------------------------------------------------------
 -- Import Lua modules
 -----------------------------------------------------------
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- lazy requires leader to be setup now
+vim.g.mapleader = ' '
+
+require('lazy').setup('plugins')
 require('settings')
 require('keymaps')
-require('plugins/packer')
-require('plugins/nvim-tree')
-require('plugins/indent-blankline')
-require('plugins/nvim-cmp')
--- require('plugins/nvim-lspconfig')
--- require('plugins/nvim-lsp-installer')
--- require('plugins/nvim-treesitter')
-require('plugins/alpha-nvim')
-require('plugins/lualine')
-require('plugins/bufferline')
-require('plugins/gitsigns')
-require('plugins/vista')
-require('plugins/telescope')
-require('plugins/formatter-nvim')
+-- require('plugins/nvim-tree')
+-- require('plugins/indent-blankline')
+-- require('plugins/nvim-cmp')
+-- -- require('plugins/nvim-lspconfig')
+-- -- require('plugins/nvim-lsp-installer')
+-- -- require('plugins/nvim-treesitter')
+-- require('plugins/alpha-nvim')
+-- require('plugins/lualine')
+-- require('plugins/bufferline')
+-- require('plugins/gitsigns')
+-- require('plugins/vista')
+-- require('plugins/telescope')
+-- require('plugins/formatter-nvim')

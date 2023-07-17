@@ -15,7 +15,6 @@ local opt = vim.opt         		-- global/buffer/windows-scoped options
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-g.mapleader = ' '
 opt.mouse = 'a'               -- enable mouse support
 opt.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 opt.swapfile = false          -- don't use swapfile
@@ -26,7 +25,6 @@ opt.swapfile = false          -- don't use swapfile
 opt.number = true             -- show line number
 opt.showmatch = true          -- highlight matching parenthesis
 opt.foldmethod = 'marker'     -- enable folding (default 'foldmarker')
--- opt.colorcolumn = '80'        -- line lenght marker at 80 columns
 opt.splitright = true         -- vertical split to the right
 opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
@@ -35,7 +33,6 @@ opt.linebreak = true          -- wrap on word boundary
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
-
 
 -- highlight on yank
 exec([[
@@ -57,7 +54,7 @@ opt.synmaxcol = 240       -- max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
-cmd [[colorscheme sonokai]]
+cmd.colorscheme 'sonokai'
 
 -----------------------------------------------------------
 -- Tabs, indent

@@ -26,6 +26,9 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 map('n', '<leader>n', '<C-^>', default_opts)
 map('n', '<leader>x', ':bd', default_opts)
 
+-- paste
+map('n', '<leader>p', '"_dP', default_opts)
+
 --  easier colon
 map('n', ';', ':', {})
 
@@ -33,10 +36,10 @@ map('n', ';', ':', {})
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 -- nvim-tree
-map('n', '<leader>e', ':NvimTreeToggle<CR>', default_opts)       -- open/close
+map('n', '<leader>e', ':Neotree toggle<CR>', default_opts)       -- open/close
 
 -- Vista tag-viewer
-map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close
+-- map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close
 
 -- telescope
 map('n', '<leader>o', ':Telescope find_files<CR>', default_opts)
