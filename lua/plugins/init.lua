@@ -42,10 +42,10 @@ return {
   },
 
   -- hardmode
---  {
---    "m4xshen/hardtime.nvim",
---    opts = {}
---  },
+  --  {
+  --    "m4xshen/hardtime.nvim",
+  --    opts = {}
+  --  },
 
   -- autocomplete
   {
@@ -74,10 +74,15 @@ return {
   },
   -- lazygit
   {
-      "kdheepak/lazygit.nvim",
-      -- optional for floating window border decoration
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  -- motion
+  {
+    "ggandor/leap.nvim",
+    opts = {}
   }
 }
