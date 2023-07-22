@@ -28,7 +28,10 @@ return {
   -- colorschemes
   'sainnhe/sonokai',
   -- comment
+  {
   'numToStr/Comment.nvim',
+    opts = {}
+  },
 
   -- shortcuts
   {
@@ -59,7 +62,9 @@ return {
     },
   },
   -- github copilot
-  'github/copilot.vim',
+  {
+    'github/copilot.vim'
+  },
   -- bufferline
   {
     'akinsho/bufferline.nvim', version = "*",
