@@ -36,7 +36,16 @@ return {
 			lsp.default_keymaps({ buffer = bufnr })
 		end)
 
-		-- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+		require("lspconfig").perlnavigator.setup({
+			settings = {
+				perlnavigator = {
+					perlPath = "carton",
+					perlParams = { "exec", "perl" },
+					enableWarnings = true,
+					perlcriticEnabled = true,
+				},
+			},
+		})
 
 		lsp.format_on_save({
 			format_opts = {
@@ -44,7 +53,8 @@ return {
 				timeout_ms = 10000,
 			},
 			servers = {
-				["null-ls"] = { "javascript", "typescript", "lua", "css", "sql", "perl" },
+				["null-ls"] = { "javascript", "typescript", "lua", "css", "sql", "vue" },
+				["perlnavigator"] = { "perl" },
 			},
 		})
 
