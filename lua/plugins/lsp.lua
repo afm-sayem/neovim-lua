@@ -72,7 +72,6 @@ return {
 				-- make sure the source name is supported by null-ls
 				-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.perltidy,
 				null_ls.builtins.formatting.stylua,
 			},
 		})
@@ -82,13 +81,56 @@ return {
 			automatic_installation = true,
 		})
 
-		-- require('lsp-zero').setup {
-		--   -- LSP Support
-		--   lspconfig = require('lspconfig'),
-		--   mason = require('mason-lspconfig'),
-		--   -- Autocompletion
-		--   cmp = require('cmp'),
-		--   luasnip = require('luasnip'),
-		-- }
+		local cmp = require("cmp")
+		local cmp_action = require("lsp-zero").cmp_action()
+		local luasnip = require("luasnip")
+
+		require("luasnip.loaders.from_vscode").lazy_load()
+		local function has_words_before()
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		end
+
+		cmp.setup({
+			sources = {
+				{ name = "copilot" },
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{ name = "buffer" },
+				{ name = "path" },
+			},
+			preselect = "item",
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
+			mapping = {
+				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if require("copilot.suggestion").is_visible() then
+						require("copilot.suggestion").accept()
+					elseif cmp.visible() then
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+					elseif luasnip.expandable() then
+						luasnip.expand()
+					elseif has_words_before() then
+						cmp.complete()
+					else
+						fallback()
+					end
+				end, {
+					"i",
+					"s",
+				}),
+				["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<C-f>"] = cmp_action.luasnip_jump_forward(),
+				["<C-b>"] = cmp_action.luasnip_jump_backward(),
+			},
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
+		})
 	end,
 }

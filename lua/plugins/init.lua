@@ -61,10 +61,6 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
-	-- github copilot
-	{
-		"github/copilot.vim",
-	},
 	-- bufferline
 	{
 		"akinsho/bufferline.nvim",
